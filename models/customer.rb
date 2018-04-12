@@ -26,8 +26,10 @@ def delete()
   end
 
   def update()
-
-  end 
+sql = "UPDATE customers SET (name, wallet) = ($1, $2) WHERE id = $3;"
+values = [@name, @wallet, @id]
+SqlRunner.run(sql, values)
+  end
 
 def self.all()
   sql = "SELECT * FROM customers"
