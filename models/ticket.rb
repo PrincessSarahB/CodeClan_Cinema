@@ -17,4 +17,21 @@ def save()
   @id = ticket['id'].to_i
 
 end
+
+def self.all()
+  sql = "SELECT * FROM tickets"
+  values = []
+  tickets = SqlRunner.run(sql, values)
+  result = Ticket.map_tickets(tickets)
+  return result
+end
+
+
+
+
+def self.map_tickets(ticket_data)
+
+return ticket_data.map {|ticket| Ticket.new(ticket)}
+
+end
 end

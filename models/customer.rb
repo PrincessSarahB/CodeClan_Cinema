@@ -20,6 +20,18 @@ def save()
 
 end
 
+def self.all()
+  sql = "SELECT * FROM customers"
+  values = []
+  customers = SqlRunner.run(sql, values)
+  result = Customer.map_customers(customers)
+  return result
+end
 
 
+def self.map_customers(customer_data)
+
+return customer_data.map {|customer| Customer.new(customer)}
+
+end
 end

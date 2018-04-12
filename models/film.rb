@@ -19,5 +19,20 @@ def save()
 
 end
 
+def self.all()
+  sql = "SELECT * FROM films"
+  values = []
+  films = SqlRunner.run(sql, values)
+  result = Film.map_films(films)
+  return result
+end
 
+
+
+
+def self.map_films(film_data)
+
+return film_data.map {|film| Film.new(film)}
+
+end
 end
