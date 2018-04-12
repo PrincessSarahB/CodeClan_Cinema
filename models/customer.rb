@@ -17,8 +17,17 @@ def save()
   values = [@name, @wallet]
   customer = SqlRunner.run(sql, values).first
   @id = customer['id'].to_i
-
 end
+
+def delete()
+    sql = "DELETE FROM customers WHERE id = $1;"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+  def update()
+
+  end 
 
 def self.all()
   sql = "SELECT * FROM customers"
