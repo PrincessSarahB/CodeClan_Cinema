@@ -11,3 +11,15 @@ def initialize(options)
   @wallet = options['wallet'].to_i
 
 end
+
+def save()
+  sql = "INSERT INTO customers (name, wallet) VALUES ($1, $2) RETURNING id;"
+  values = [@name, @wallet]
+  customer = SqlRunner.run(sql, values).first
+  @id = customer['id'].to_i
+
+end
+
+
+
+end
