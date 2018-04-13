@@ -18,8 +18,11 @@ def save()
   @id = customer['id'].to_i
 end
 
-
-
+def delete()
+    sql = "DELETE FROM screenings WHERE id = $1;"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
 
 def self.all
   sql = "SELECT * FROM screenings"
@@ -28,6 +31,12 @@ def self.all
   result = Screening.map_screening(screenings)
   return result
 
+end
+
+def self.delete_all()
+  sql = "DELETE FROM screenings"
+  values = []
+  SqlRunner.run(sql, values)
 end
 
 def self.map_screening(screening_data)
