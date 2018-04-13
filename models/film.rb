@@ -38,6 +38,14 @@ customers = SqlRunner.run(sql, values)
 result = Customer.map_customers(customers)
   end
 
+  def number_of_customers()
+  sql = "SELECT films.*, tickets.* FROM films INNER JOIN tickets ON films.id = tickets.film_id WHERE tickets.film_id = $1;"
+  values = [@id]
+  customer_count = SqlRunner.run(sql, values)
+  result = Ticket.map_tickets(customer_count)
+  return result.count
+  end
+
 def self.all()
   sql = "SELECT * FROM films"
   values = []
