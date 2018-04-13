@@ -84,39 +84,39 @@ customer1 = Customer.new({
 
                       ticket5.save()
 
-                    screening1 = Screening.new({
-                      'screening_time' => '19:00',
-                      'film_id' => film1.id,
-                      'ticket_id' => ticket1.id
-                      })
-
-                      screening1.save()
-
-                      screening2 = Screening.new({
-                        'screening_time' => '19:50',
-                        'film_id' => film2.id,
-                        'ticket_id' => ticket2.id
+                      screening1 = Screening.new({
+                        'screening_time' => '19:00',
+                        'film_id' => film1.id,
+                        'ticket_id' => ticket1.id
                         })
 
-                        screening2.save()
+                        screening1.save()
 
-                        screening3 = Screening.new({
-                          'screening_time' => '21:30',
-                          'film_id' => film1.id,
-                          'ticket_id' => ticket3.id
+                        screening2 = Screening.new({
+                          'screening_time' => '19:50',
+                          'film_id' => film2.id,
+                          'ticket_id' => ticket2.id
                           })
 
-                          screening3.save()
+                          screening2.save()
 
-                          screening4 = Screening.new({
-                            'screening_time' => '00:00',
-                            'film_id' => film3.id,
-                            'ticket_id' => ticket5.id
+                          screening3 = Screening.new({
+                            'screening_time' => '21:30',
+                            'film_id' => film1.id,
+                            'ticket_id' => ticket3.id
                             })
 
-                            screening4.save()
+                            screening3.save()
 
-                            binding.pry
-                            nil
+                            screening4 = Screening.new({
+                              'screening_time' => '00:00',
+                              'film_id' => film3.id,
+                              'ticket_id' => ticket5.id
+                              })
 
-#customer has ticket, ticket has screening, screening has film
+                              screening4.save()
+
+                              binding.pry
+                              nil
+
+                              #customer has ticket, ticket has screening, screening has film
