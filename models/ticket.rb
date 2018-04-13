@@ -2,7 +2,8 @@ require_relative('../db/sql_runner.rb')
 
 class Ticket
 
-attr_reader :id, :customer_id, :film_id
+attr_reader :id
+attr_accessor :customer_id, :film_id
 
 def initialize(options)
 @id = options['id'].to_i

@@ -3,17 +3,18 @@ require_relative('../db/sql_runner.rb')
 class Screening
 
 attr_reader :id
-attr_accessor :screening_time, :film_id
+attr_accessor :screening_time, :film_id, :ticket_id
 
 def initialize(options)
 @id = options['id'].to_i
 @screening_time = options['screening_time']
 @film_id = options['film_id'].to_i
+@ticket_id = options['ticket_id'].to_i
 end
 
 def save()
-  sql = "INSERT INTO screenings (screening_time, film_id) VALUES ($1, $2) RETURNING id;"
-  values = [@screening_time, @film_id]
+  sql = "INSERT INTO screenings (screening_time, film_id, ticket_id) VALUES ($1, $2, $3) RETURNING id;"
+  values = [@screening_time, @film_id, @ticket_id]
   customer = SqlRunner.run(sql, values).first
   @id = customer['id'].to_i
 end
@@ -25,8 +26,8 @@ def delete()
   end
 
   def update()
-  sql = "UPDATE screenings SET (screening_time, film_id) = ($1, $2) WHERE id = $3;"
-  values = [@screening_time, @film_id, @id]
+  sql = "UPDATE screenings SET (screening_time, film_id, ticket_id) = ($1, $2, $3) WHERE id = $4;"
+  values = [@screening_time, @film_id, @ticket_id, @id]
   SqlRunner.run(sql, values)
   end
 
