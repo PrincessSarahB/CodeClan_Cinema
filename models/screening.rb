@@ -19,4 +19,19 @@ def save()
 end
 
 
+
+
+def self.all
+  sql = "SELECT * FROM screenings"
+  values = []
+  screenings = SqlRunner.run(sql, values)
+  result = Screening.map_screening(screenings)
+  return result
+
+end
+
+def self.map_screening(screening_data)
+return screening_data.map {|screening| Screening.new(screening)}
+end
+
 end
