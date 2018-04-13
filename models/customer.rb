@@ -38,6 +38,20 @@ films = SqlRunner.run(sql, values)
 result = Film.map_films(films)
   end
 
+  def pay_for_ticket(film)
+if @wallet >= film.price
+return @wallet -= film.price
+  end
+end
+
+def number_of_tickets()
+sql = "SELECT customers.*, tickets.* FROM customers INNER JOIN tickets ON customers.id = tickets.customer_id WHERE tickets.customer_id = $1;"
+values = [@id]
+tickets = SqlRunner.run(sql, values)
+result = Ticket.map_tickets(tickets)
+return result.count
+end
+
 def self.all()
   sql = "SELECT * FROM customers"
   values = []
