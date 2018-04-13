@@ -24,6 +24,12 @@ def delete()
     SqlRunner.run(sql, values)
   end
 
+  def update()
+  sql = "UPDATE screenings SET (screening_time, film_id) = ($1, $2) WHERE id = $3;"
+  values = [@screening_time, @film_id, @id]
+  SqlRunner.run(sql, values)
+  end
+
 def self.all
   sql = "SELECT * FROM screenings"
   values = []
