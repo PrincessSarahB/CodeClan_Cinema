@@ -42,10 +42,6 @@ class Film
     customers.count
   end
 
-  def most_popular_screening()
-
-  end
-
   def self.all()
     sql = "SELECT * FROM films"
     values = []

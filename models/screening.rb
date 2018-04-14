@@ -31,7 +31,7 @@ class Screening
     SqlRunner.run(sql, values)
   end
 
-  def tickets_sold()
+  def most_tickets_sold()
 
 
   end
