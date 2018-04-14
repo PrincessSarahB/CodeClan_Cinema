@@ -30,10 +30,18 @@ class Screening
     SqlRunner.run(sql, values)
   end
 
-  def most_tickets_sold()
-
-
+  def self.tickets_sold()
+    sql = "SELECT * FROM tickets ORDER BY tickets.screening_id;"
+    tickets_sold = SqlRunner.run(sql)
+    sales = Ticket.map_tickets(tickets_sold)
+    count_sales = Hash.new(0)
+    for ticket in sales
+      count_sales[ticket.screening_id]+=1
+    end
+    result = count_sales.max_by{|key, value| value}
+    return result
   end
+
 
   def self.all
     sql = "SELECT * FROM screenings"

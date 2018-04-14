@@ -121,6 +121,14 @@ customer1 = Customer.new({
 
                       ticket5.save()
 
+                      ticket6 = Ticket.new({
+                        'customer_id' => customer2.id,
+                        'film_id' => film1.id,
+                        'screening_id' => screening1.id
+                        })
+
+                        ticket6.save()
+
 
 
                               binding.pry
